@@ -24,11 +24,17 @@ import {
   ShieldCheck,
   Headset,
   Cpu,
-  ClipboardList
+  ClipboardList,
+  Calendar,
+  Globe,
+  Layers,
+  FileCheck
 } from 'lucide-react';
 
 // --- CONFIGURACIÓN ---
-const WHATSAPP_LINK = "https://wa.me/5493510000000?text=Hola_Centinel_Quiero_analizar_mi_flota_y_ver_como_funciona";
+// Número mantenido: +5493518626405
+// Mensaje actualizado: "Hola vengo de la Web, me gustaría hablar con un asesor"
+const WHATSAPP_LINK = "https://wa.me/5493518626405?text=Hola%20vengo%20de%20la%20Web%2C%20me%20gustar%C3%ADa%20hablar%20con%20un%20asesor";
 
 // --- COMPONENTES ---
 
@@ -49,8 +55,8 @@ const Navbar = () => {
     { name: "Problemas Comunes", href: "#dolores" },
     { name: "Solución", href: "#solucion" },
     { name: "Modelo Económico", href: "#modelo" },
-    { name: "Dashcam", href: "#dashcam" },
     { name: "Calculadora", href: "#roi" },
+    { name: "Dashcam", href: "#dashcam" },
   ];
 
   const handleNavClick = (e, href) => {
@@ -76,7 +82,6 @@ const Navbar = () => {
           </span>
         </a>
 
-        {/* Menu Desktop */}
         <div className="hidden lg:flex flex-1 justify-center items-center gap-8 px-4">
           {navLinks.map((link) => (
             <a key={link.name} href={link.href} onClick={(e) => handleNavClick(e, link.href)} className="text-sm font-bold text-gray-200 hover:text-[#9fe43f] transition-colors uppercase tracking-wide cursor-pointer whitespace-nowrap">
@@ -91,13 +96,11 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* Botón Menu Mobile */}
         <button className="lg:hidden text-white p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
-      {/* Dropdown Menu Mobile */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-[#011a42] border-b border-white/10 absolute top-full left-0 w-full shadow-2xl overflow-hidden animate-slide-down">
           <div className="flex flex-col p-6 space-y-4">
@@ -106,7 +109,7 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
-            <a href={WHATSAPP_LINK} className="bg-[#9fe43f] text-[#02255b] w-full text-center py-4 rounded-xl font-black text-lg mt-4 shadow-lg flex items-center justify-center gap-2">
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-[#9fe43f] text-[#02255b] w-full text-center py-4 rounded-xl font-black text-lg mt-4 shadow-lg flex items-center justify-center gap-2">
               HABLAR AHORA <ArrowRight className="w-5 h-5" />
             </a>
           </div>
@@ -128,7 +131,7 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto z-10 relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div className="animate-fade-in-up">
           <span className="inline-block py-1.5 px-3 sm:px-4 rounded-lg bg-[#9fe43f]/10 border border-[#9fe43f]/30 text-[#9fe43f] text-[10px] sm:text-xs font-bold tracking-widest mb-4 sm:mb-6 uppercase">
-            servicio para flotas pequeñas, medianas y grandes
+            Rastreo y Control Satelital
           </span>
           
           <h1 className="mb-6 lg:mb-8 font-black text-white tracking-tight drop-shadow-2xl text-4xl sm:text-5xl lg:text-6xl leading-[1.1]">
@@ -140,16 +143,17 @@ const Hero = () => {
 
           <p className="text-gray-200 text-base sm:text-lg lg:text-xl mb-8 lg:mb-10 max-w-xl leading-relaxed border-l-4 border-[#9fe43f] pl-4 sm:pl-6">
             No importa si son 2 o 500 vehículos: <strong>no tener el control cuesta plata.</strong><br className="mb-2 hidden sm:block"/>
-            Gestioná y controlá toda tu flota desde una sola plataforma <span className="text-white font-bold underline decoration-[#9fe43f] decoration-2 underline-offset-4">sin pagar alquiler mensual</span>.
+            Gestioná y controlá toda tu flota satelitalmente desde una sola plataforma <span className="text-white font-bold underline decoration-[#9fe43f] decoration-2 underline-offset-4">sin pagar alquiler mensual</span>.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
-            <a href="#solucion" className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-[#9fe43f] text-[#02255b] font-black py-4 px-6 sm:px-8 rounded-xl lg:rounded-lg text-base sm:text-lg shadow-[0_0_20px_rgba(159,228,63,0.3)] hover:bg-white hover:scale-105 active:scale-95 transition-all text-center">
-              PROFESIONALIZAR MI GESTIÓN
-            </a>
-            {/* TEXTO CAMBIADO A "Prueba Gratuita" */}
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-transparent border-2 border-white/20 text-white font-bold py-4 px-6 sm:px-8 rounded-xl lg:rounded-lg text-base sm:text-lg hover:bg-white/10 hover:scale-105 active:scale-95 transition-all text-center">
-              Prueba Gratuita
+            <a 
+              href={WHATSAPP_LINK} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-[#9fe43f] text-[#02255b] font-black py-4 px-8 sm:px-10 rounded-xl lg:rounded-lg text-lg sm:text-xl shadow-[0_0_25px_rgba(159,228,63,0.4)] hover:bg-white hover:scale-105 active:scale-95 transition-all text-center uppercase tracking-tight"
+            >
+              PEDIR PRUEBA DE 15 DÍAS
             </a>
           </div>
         </div>
@@ -186,7 +190,7 @@ const PainPoints = () => {
     { icon: <MessageCircle className="w-6 h-6 sm:w-8 sm:h-8 text-red-400" />, title: "Gestión por WhatsApp", desc: "Dependés de que el chofer te conteste el teléfono para saber dónde está o por qué demora." },
     { icon: <Activity className="w-6 h-6 sm:w-8 sm:h-8 text-red-400" />, title: "Puntos ciegos", desc: "No sabés qué están haciendo ni por donde están los vehículos ahora." },
     { icon: <Briefcase className="w-6 h-6 sm:w-8 sm:h-8 text-red-400" />, title: "Costos ocultos", desc: "Combustible, tiempos muertos, usos personales de la flota, paradas largas, rutas ineficientes, malos tratos al vehiculo." },
-    { icon: <AlertCircle className="w-6 h-6 sm:w-8 sm:h-8 text-red-400" />, title: "Reclamos sin defensa", desc: "Ante una queja de un cliente o una multa, es tu palabra contra de ellos. Todo se vuelve una discusión." },
+    { icon: <AlertCircle className="w-6 h-6 sm:w-8 sm:h-8 text-red-400" />, title: "Reclamos sin defensa", desc: "Ante una queja de un cliente o una situación con costos legales / seguros, es tu palabra contra de ellos." },
     { icon: <Briefcase className="w-6 h-6 sm:w-8 sm:h-8 text-red-400" />, title: "Alquileres eternos", desc: "Pagás mes a mes un servicio de rastreo (comodato) que nunca es tuyo. Un pasivo fijo que solo crece con la inflación." },
     { icon: <Settings className="w-6 h-6 sm:w-8 sm:h-8 text-red-400" />, title: "Mantenimiento a ciegas", desc: "Te enterás que había que hacer un service cuando el vehículo ya se rompió en la calle por malos usos que no ves." }
   ];
@@ -241,7 +245,8 @@ const Solution = () => {
                             "Sabés qué pasó ayer y la semana pasada.",
                             "Detectás desvíos y paradas innecesarias al instante.",
                             "Alertas de velocidad, uso fuera de horario, ralenti, llegada a destino y más",
-                            "Menos llamadas, menos discusiones y más datos"
+                            "Menos llamadas, menos discusiones y más datos",
+                            "2 en 1: Rastreo Satelital + Video"
                         ].map((item, i) => (
                             <li key={i} className="flex items-start gap-3">
                                 <CheckCircle className="w-5 h-5 lg:w-6 lg:h-6 text-[#9fe43f] flex-shrink-0 mt-0.5" />
@@ -258,7 +263,6 @@ const Solution = () => {
                 <div className="relative w-full">
                     <div className="absolute inset-0 bg-[#9fe43f] blur-[100px] opacity-10"></div>
                     
-                    {/* Contenedor del Video de Monitoreo */}
                     <div className="relative bg-[#011a42] border border-white/10 rounded-2xl lg:rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-full overflow-hidden aspect-[4/5] sm:aspect-video lg:aspect-square flex items-end">
                         <video 
                             autoPlay 
@@ -276,7 +280,6 @@ const Solution = () => {
                                 <span className="text-white text-[10px] sm:text-xs font-bold tracking-wider">MONITOREO EN VIVO</span>
                             </div>
                         </div>
-                        {/* Alertas compactas */}
                         <div className="relative z-20 w-full p-4 sm:p-6 lg:p-8 flex flex-col gap-2.5 lg:gap-3 items-end justify-end pointer-events-none overflow-hidden">
                             <div className="css-alert-1 bg-white/95 backdrop-blur-md border border-red-100 text-[#02255b] p-2.5 lg:p-3 rounded-xl shadow-[0_12px_24px_rgba(220,38,38,0.2)] w-full max-w-[190px] lg:max-w-[225px] pointer-events-auto">
                                 <div className="flex items-center gap-1 lg:gap-1.5 font-black text-[9px] lg:text-[10px] mb-0.5 lg:mb-1 tracking-wide text-red-600 uppercase">
@@ -307,69 +310,221 @@ const Solution = () => {
     );
 };
 
-// 5. MODELO DE NEGOCIO - PROPIEDAD
+// 5. MODELO DE NEGOCIO - ALQUILER VS COMPRA
 const BusinessModel = () => {
     return (
         <section id="modelo" className="py-16 lg:py-24 px-4 sm:px-6 bg-[#00102b] relative overflow-hidden">
              <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'linear-gradient(45deg, #ffffff 25%, transparent 25%, transparent 75%, #ffffff 75%, #ffffff), linear-gradient(45deg, #ffffff 25%, transparent 25%, transparent 75%, #ffffff 75%, #ffffff)', backgroundPosition: '0 0, 10px 10px', backgroundSize: '20px 20px' }}></div>
 
-            <div className="max-w-6xl mx-auto relative z-10 flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
-                <div className="lg:w-1/2 w-full">
-                    <span className="text-[#9fe43f] font-bold tracking-widest text-xs sm:text-sm uppercase mb-3 block">
-                        MODELO DIFERENCIAL
-                    </span>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 lg:mb-6 leading-tight">
-                        Sé dueño del sistema, <br className="hidden sm:block"/>dejá de alquilar.
-                    </h2>
-                    <p className="text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed mb-8">
-                        En Argentina, el comodato (alquiler eterno) es un pasivo que crece con la inflación. 
-                        Nuestra propuesta: <strong>Comprás el hardware (de contado o financiado)</strong> y eliminás el alquiler para siempre.
-                    </p>
+            <div className="max-w-4xl mx-auto relative z-10 text-center">
+                <span className="text-[#9fe43f] font-bold tracking-widest text-xs sm:text-sm uppercase mb-3 block">
+                    ALQUILER VS COMPRA
+                </span>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 lg:mb-6 leading-tight">
+                    Sé dueño del sistema, <br className="hidden sm:block"/>dejá de alquilar.
+                </h2>
+                <p className="text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed mb-10 max-w-3xl mx-auto">
+                    En Argentina tener un servicio de rastreo satelital con mensualidad (alquiler eterno) es un pasivo que crece con la inflación. 
+                    <br /><br />
+                    ✅ <strong>Nuestra propuesta:</strong> Comprás el hardware GPS que incluye la plataforma para manejar y ver todo. Eliminás el alquiler para siempre. El sistema se paga solo literalmente, con lo que ahorras de la mensualidad y con lo que ahorras en la calle.
+                </p>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 pt-6 border-t border-white/10">
-                        <div className="flex items-center gap-3">
-                            <div className="bg-[#9fe43f]/10 p-2 rounded-lg border border-[#9fe43f]/20">
-                                <ShieldCheck className="w-5 h-5 text-[#9fe43f]" />
-                            </div>
-                            <span className="text-white font-bold text-sm lg:text-base">Garantía</span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 pt-10 border-t border-white/10 text-left">
+                    <div className="flex items-center gap-3">
+                        <div className="bg-[#9fe43f]/10 p-2 rounded-lg border border-[#9fe43f]/20">
+                            <ShieldCheck className="w-5 h-5 text-[#9fe43f]" />
                         </div>
-                        <div className="flex items-center gap-3">
-                            <div className="bg-[#9fe43f]/10 p-2 rounded-lg border border-[#9fe43f]/20">
-                                <Headset className="w-5 h-5 text-[#9fe43f]" />
-                            </div>
-                            <span className="text-white font-bold text-sm lg:text-base">Post venta</span>
+                        <span className="text-white font-bold text-sm lg:text-base">Garantía</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <div className="bg-[#9fe43f]/10 p-2 rounded-lg border border-[#9fe43f]/20">
+                            <Headset className="w-5 h-5 text-[#9fe43f]" />
                         </div>
-                        <div className="flex items-center gap-3">
-                            <div className="bg-[#9fe43f]/10 p-2 rounded-lg border border-[#9fe43f]/20">
-                                <Cpu className="w-5 h-5 text-[#9fe43f]" />
-                            </div>
-                            <span className="text-white font-bold text-sm lg:text-base">Hardware de larga duración (+8 años)</span>
+                        <span className="text-white font-bold text-sm lg:text-base">Post venta</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <div className="bg-[#9fe43f]/10 p-2 rounded-lg border border-[#9fe43f]/20">
+                            <Cpu className="w-5 h-5 text-[#9fe43f]" />
                         </div>
-                        <div className="flex items-center gap-3">
-                            <div className="bg-[#9fe43f]/10 p-2 rounded-lg border border-[#9fe43f]/20">
-                                <ClipboardList className="w-5 h-5 text-[#9fe43f]" />
-                            </div>
-                            <span className="text-white font-bold text-sm lg:text-base">Contrato</span>
+                        <span className="text-white font-bold text-sm lg:text-base">Hardware de larga duración (+8 años)</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <div className="bg-[#9fe43f]/10 p-2 rounded-lg border border-[#9fe43f]/20">
+                            <ClipboardList className="w-5 h-5 text-[#9fe43f]" />
                         </div>
+                        <span className="text-white font-bold text-sm lg:text-base">Contrato</span>
                     </div>
                 </div>
+            </div>
+        </section>
+    );
+};
 
-                <div className="lg:w-1/2 w-full bg-[#9fe43f] rounded-3xl p-6 sm:p-8 lg:p-12 text-[#02255b] shadow-[0_0_40px_rgba(159,228,63,0.15)]">
-                    <h3 className="text-xl lg:text-2xl font-black mb-5 lg:mb-6 border-b border-[#02255b]/20 pb-3 lg:pb-4">
-                        Opciones de pago
-                    </h3>
-                    <div className="space-y-5 lg:space-y-6">
-                        <div>
-                            <p className="font-black text-base lg:text-lg mb-1 leading-tight">Pago de contado</p>
-                            <p className="opacity-80 text-xs lg:text-sm font-medium">Los equipos son tuyos desde el día 1.</p>
+// 6. CALCULADORA ROI
+const ROICalculator = () => {
+    const [vehicles, setVehicles] = useState(10);
+    const [liters, setLiters] = useState(200);
+    const [price, setPrice] = useState(1800);
+    const [deviation, setDeviation] = useState(10);
+    const [correctiveCost, setCorrectiveCost] = useState(40000);
+
+    const fuelLoss = vehicles * liters * price * (deviation / 100);
+    const maintenanceLoss = vehicles * correctiveCost;
+
+    const monthlyLoss = fuelLoss + maintenanceLoss;
+    const yearlyLoss = monthlyLoss * 12;
+
+    const formatCurrency = (value) => {
+        return new Intl.NumberFormat('es-AR', {
+            style: 'currency',
+            currency: 'ARS', maximumFractionDigits: 0
+        }).format(value);
+    };
+
+    return (
+        <section id="roi" className="py-12 lg:py-16 px-4 sm:px-6 bg-[#02255b] relative overflow-hidden scroll-mt-20">
+            <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+            
+            <div className="max-w-6xl mx-auto relative z-10">
+                <div className="text-center mb-8 lg:mb-10">
+                    <div className="inline-flex items-center gap-2 bg-red-500/10 text-red-400 px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-3 lg:mb-4 border border-red-500/30">
+                        <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Pérdida Invisible
+                    </div>
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-3 lg:mb-4 leading-tight">
+                        Tu flota puede estar perdiendo <br className="hidden md:block"/>dinero sin que lo veas.
+                    </h2>
+                    <p className="text-gray-300 text-base sm:text-lg lg:text-xl font-medium">
+                        Calculalo en 30 segundos.
+                    </p>
+                </div>
+
+                <div className="bg-[#011a42] border border-white/10 rounded-3xl p-5 sm:p-6 lg:p-8 shadow-2xl w-full">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+                        <div className="lg:col-span-7 w-full">
+                            <div className="space-y-6 lg:space-y-8 mt-2">
+                                <div>
+                                    <label className="flex items-center justify-between text-xs sm:text-sm font-bold text-gray-300 mb-3">
+                                        <span className="flex items-center gap-2"><Truck className="w-4 h-4 text-[#9fe43f]"/> Vehículos</span>
+                                        <span className="text-[#9fe43f] text-sm sm:text-base">{vehicles}</span>
+                                    </label>
+                                    <input 
+                                        type="range" min="1" max="100" value={vehicles} onChange={(e) => setVehicles(Number(e.target.value))}
+                                        className="w-full h-2 bg-[#02255b] rounded-lg appearance-none cursor-pointer accent-[#9fe43f]"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="flex items-center justify-between text-xs sm:text-sm font-bold text-gray-300 mb-3">
+                                        <span className="flex items-center gap-2"><Activity className="w-4 h-4 text-[#9fe43f]"/> Litros / vehículo (Mensual)</span>
+                                        <span className="text-[#9fe43f] text-sm sm:text-base">{liters} L</span>
+                                    </label>
+                                    <input 
+                                        type="range" min="50" max="2000" step="50" value={liters} onChange={(e) => setLiters(Number(e.target.value))}
+                                        className="w-full h-2 bg-[#02255b] rounded-lg appearance-none cursor-pointer accent-[#9fe43f]"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="flex items-center justify-between text-xs sm:text-sm font-bold text-gray-300 mb-3">
+                                        <span className="flex items-center gap-2"><Briefcase className="w-4 h-4 text-[#9fe43f]"/> Precio del litro ($ ARS)</span>
+                                        <span className="text-[#9fe43f] text-sm sm:text-base">${price}</span>
+                                    </label>
+                                    <input 
+                                        type="range" min="500" max="2000" step="50" value={price} onChange={(e) => setPrice(Number(e.target.value))}
+                                        className="w-full h-2 bg-[#02255b] rounded-lg appearance-none cursor-pointer accent-[#9fe43f]"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="flex items-center justify-between text-xs sm:text-sm font-bold text-gray-300 mb-3">
+                                        <span className="flex items-center gap-2 truncate"><Activity className="w-4 h-4 text-[#9fe43f] flex-shrink-0"/> % Desvío combustible (ralentí, robos, etc)</span>
+                                        <span className="text-[#9fe43f] text-sm sm:text-base ml-2">{deviation}%</span>
+                                    </label>
+                                    <input 
+                                        type="range" min="1" max="20" value={deviation} onChange={(e) => setDeviation(Number(e.target.value))}
+                                        className="w-full h-2 bg-[#02255b] rounded-lg appearance-none cursor-pointer accent-[#9fe43f]"
+                                    />
+                                </div>
+                                <div className="pt-2">
+                                    <label className="flex items-center justify-between text-xs sm:text-sm font-bold text-gray-300 mb-3">
+                                        <span className="flex items-center gap-2 truncate"><Settings className="w-4 h-4 text-[#9fe43f] flex-shrink-0"/> Costo correctivo mensual por mal uso (estimado)</span>
+                                        <span className="text-[#9fe43f] text-sm sm:text-base ml-2">{formatCurrency(correctiveCost)}</span>
+                                    </label>
+                                    <input 
+                                        type="range" min="0" max="200000" step="5000" value={correctiveCost} onChange={(e) => setCorrectiveCost(Number(e.target.value))}
+                                        className="w-full h-2 bg-[#02255b] rounded-lg appearance-none cursor-pointer accent-[#9fe43f]"
+                                    />
+                                    <p className="text-[10px] sm:text-xs text-gray-500 mt-2 leading-tight">
+                                        Este valor representa gastos por roturas evitables, desgastes prematuros o accidentes leves por conducción descuidada por vehículo.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <p className="font-black text-base lg:text-lg mb-1 leading-tight">Pago Financiado</p>
-                            <p className="opacity-80 text-xs lg:text-sm font-medium">Podes financiar con tarjeta de crédito, cheques, financiacion propia o comodato si el cliente lo pide explicitamente.</p>
+
+                        <div className="lg:col-span-5 flex flex-col gap-4 w-full">
+                            <div className="bg-red-500/10 border border-red-500/30 rounded-2xl p-5 sm:p-6 text-center relative overflow-hidden">
+                                <div className="absolute -top-10 -right-10 w-32 h-32 bg-red-500/20 rounded-full blur-3xl"></div>
+                                
+                                <p className="text-red-400 text-[7px] sm:text-[8px] font-black uppercase tracking-widest mb-3 animate-pulse">
+                                    Simulación conservadora (podés ajustar valores)
+                                </p>
+
+                                <h3 className="text-red-400 font-bold mb-1 sm:mb-2 text-sm">Podrías estar perdiendo</h3>
+                                <div className="text-3xl sm:text-4xl lg:text-4xl font-black text-white mb-1 tracking-tighter">
+                                    {formatCurrency(monthlyLoss)}
+                                </div>
+                                <div className="text-[10px] sm:text-xs text-gray-400 mb-1">por mes.</div>
+                                
+                                <div className="mt-3 pt-3 border-t border-red-500/20">
+                                    <p className="text-red-200 text-[10px] sm:text-xs">
+                                        Equivale a <strong className="text-white text-xs sm:text-sm">{formatCurrency(yearlyLoss)}</strong> al año.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="bg-[#02255b] border border-white/5 rounded-2xl p-5 sm:p-6">
+                                <h4 className="text-white font-bold mb-3 sm:mb-4 flex items-center gap-2 text-sm">
+                                    <Shield className="w-4 h-4 sm:w-4 text-[#9fe43f]" />
+                                    Cómo lo evitamos:
+                                </h4>
+                                <ul className="space-y-2 sm:space-y-2.5 mb-5">
+                                    {[
+                                        "Frenás desvíos y consumo innecesario",
+                                        "Eliminás kilómetros improductivos",
+                                        "Controlas uso, consumos o robos de combustible",
+                                        "Detectás ineficiencias antes de que cuesten dinero",
+                                        "Convertís datos en decisiones concretas"
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-center gap-2 text-[10px] sm:text-xs text-gray-300">
+                                            <CheckCircle className="w-3.5 h-3.5 text-[#9fe43f] flex-shrink-0" /> {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="bg-[#9fe43f]/10 border border-[#9fe43f]/30 rounded-xl p-3 mb-4">
+                                    <p className="text-[#9fe43f] text-[10px] sm:text-xs font-bold text-center leading-tight">
+                                        Si detectás solo el 50% de esta pérdida, el sistema se paga solo.
+                                    </p>
+                                </div>
+                                <a 
+                                    href={WHATSAPP_LINK} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="block w-full bg-[#9fe43f] text-[#02255b] text-center font-black py-3 rounded-xl hover:bg-white transition-colors shadow-lg text-xs sm:text-sm"
+                                >
+                                    DEJAR DE PERDER DINERO
+                                </a>
+                            </div>
                         </div>
-                        <div className="pt-4 border-t border-[#02255b]/10">
-                            <p className="font-black text-base lg:text-lg mb-1 leading-tight">Inversión Inteligente</p>
-                            <p className="opacity-80 text-xs lg:text-sm font-medium">Dejas de alquilar tu servicio. El sistema se paga solo con lo que ahorras en la calle.</p>
+                    </div>
+
+                    <div className="mt-8 pt-5 border-t border-white/10">
+                        <h5 className="text-gray-400 text-[9px] sm:text-[10px] font-bold mb-2 uppercase tracking-wider">Fuentes y Referencias del Simulador:</h5>
+                        <div className="text-[8px] sm:text-[9px] text-gray-500 space-y-1.5 leading-relaxed">
+                            <p>Las estimaciones de ahorro usadas en este simulador se basan en informes y estudios del sector de telemetría y gestión de flotas:</p>
+                            <ul className="list-disc pl-3 sm:pl-4 space-y-0.5">
+                                <li><strong className="text-gray-400">Geotab – Fleet Profitability & ROI White Paper:</strong> análisis de cómo la telemetría reduce costos operativos y de combustible. <a href="https://www.geotab.com/white-paper/fleet-profitability-coi-roi/" target="_blank" rel="noopener noreferrer" className="text-[#9fe43f]/70 hover:text-[#9fe43f] underline decoration-dotted">Ver reporte</a></li>
+                                <li><strong className="text-gray-400">Geotab – Fleet Fuel Management Solutions:</strong> datos sobre ahorro en consumo y uso eficiente. <a href="https://www.geotab.com/fleet-management-solutions/fleet-fuel-management/" target="_blank" rel="noopener noreferrer" className="text-[#9fe43f]/70 hover:text-[#9fe43f] underline decoration-dotted">Ver reporte</a></li>
+                                <li><strong className="text-gray-400">Geotab – Greening the Fleet Survey:</strong> métricas reales de telemetría aplicadas a consumo, idling y kms recorridos. <a href="https://www.geotab.com/CMS-GeneralFiles-production/NA/ebooks/Geotab_Greening-the-Fleet-Survey_EN_AODA.pdf" target="_blank" rel="noopener noreferrer" className="text-[#9fe43f]/70 hover:text-[#9fe43f] underline decoration-dotted">Ver reporte</a></li>
+                                <li><strong className="text-gray-400">Verizon Connect – Fleet Cost Savings Strategies:</strong> reporte con datos de ahorro en combustible, mantenimiento y siniestros. <a href="https://www.verizonconnect.com/resources/article/fleet-management-cost-savings-strategies/" target="_blank" rel="noopener noreferrer" className="text-[#9fe43f]/70 hover:text-[#9fe43f] underline decoration-dotted">Ver reporte</a></li>
+                                <li><strong className="text-gray-400">U.S. Department of Energy – Telematics Federal Fleets Guide:</strong> guía sobre eficiencia y reducción de consumo con sistemas telemáticos. <a href="https://www.energy.gov/femp/telematics-federal-fleets-guide-efficient-fleet-management" target="_blank" rel="noopener noreferrer" className="text-[#9fe43f]/70 hover:text-[#9fe43f] underline decoration-dotted">Ver reporte</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -378,7 +533,7 @@ const BusinessModel = () => {
     );
 };
 
-// 6. DASHCAMS - EVIDENCIA (ORDEN DINÁMICO)
+// 7. DASHCAMS - EVIDENCIA
 const Dashcams = () => {
     const DashcamVisual = () => (
         <div className="relative z-10 bg-gradient-to-br from-[#02255b] to-[#00102b] rounded-3xl p-3 sm:p-4 border border-white/10 shadow-2xl w-full">
@@ -451,9 +606,9 @@ const Dashcams = () => {
                         {[
                             "Respaldo visual ante cualquier situación",
                             "Reducís fraudes y conflictos",
-                            "Disuadís conductas riesgosas en cabina",
+                            "Disuadis conductas riesgosas",
                             "Doble lente: ruta y cabina (opcional)",
-                            "Dashcams 2 en 1: GPS + Video"
+                            "2 en 1: Rastreo Satelital + Video"
                         ].map((item, i) => (
                             <li key={i} className="flex gap-3 text-gray-300 text-sm lg:text-base items-center">
                                 <CheckCircle className="w-5 h-5 text-[#9fe43f] flex-shrink-0" /> 
@@ -462,184 +617,12 @@ const Dashcams = () => {
                         ))}
                     </ul>
                     <div>
-                         <a href={WHATSAPP_LINK} className="text-xs sm:text-sm text-gray-400 hover:text-white underline decoration-dotted underline-offset-4 block text-center lg:text-left">
-                            Consultar precio y stock de equipos V7 PRO &rarr;
+                         <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm text-gray-400 hover:text-white underline decoration-dotted underline-offset-4 block text-center lg:text-left">
+                            Consultar precio y stock de equipo →
                         </a>
                     </div>
                 </div>
 
-            </div>
-        </section>
-    );
-};
-
-// 7. CALCULADORA ROI
-const ROICalculator = () => {
-    const [vehicles, setVehicles] = useState(10);
-    const [liters, setLiters] = useState(200);
-    const [price, setPrice] = useState(1800);
-    const [deviation, setDeviation] = useState(10);
-    const [misusePercent, setMisusePercent] = useState(80);
-
-    const fuelLoss = vehicles * liters * price * (deviation / 100);
-    const maintenanceCostPerUnit = 50000;
-    const maintenanceLoss = vehicles * (misusePercent / 100) * maintenanceCostPerUnit;
-
-    const monthlyLoss = fuelLoss + maintenanceLoss;
-    const yearlyLoss = monthlyLoss * 12;
-
-    const formatCurrency = (value) => {
-        return new Intl.NumberFormat('es-AR', {
-            style: 'currency',
-            currency: 'ARS',
-            maximumFractionDigits: 0
-        }).format(value);
-    };
-
-    return (
-        <section id="roi" className="py-12 lg:py-16 px-4 sm:px-6 bg-[#02255b] relative overflow-hidden scroll-mt-20">
-            <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
-            
-            <div className="max-w-6xl mx-auto relative z-10">
-                <div className="text-center mb-8 lg:mb-10">
-                    <div className="inline-flex items-center gap-2 bg-red-500/10 text-red-400 px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-3 lg:mb-4 border border-red-500/30">
-                        <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Pérdida Invisible
-                    </div>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-3 lg:mb-4 leading-tight">
-                        Tu flota puede estar perdiendo <br className="hidden md:block"/>dinero sin que lo veas.
-                    </h2>
-                    <p className="text-gray-300 text-base sm:text-lg lg:text-xl font-medium">
-                        Calculalo en 30 segundos.
-                    </p>
-                </div>
-
-                <div className="bg-[#011a42] border border-white/10 rounded-3xl p-5 sm:p-6 lg:p-8 shadow-2xl w-full">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-                        <div className="lg:col-span-7 w-full">
-                            <div className="space-y-6 lg:space-y-8 mt-2">
-                                <div>
-                                    <label className="flex items-center justify-between text-xs sm:text-sm font-bold text-gray-300 mb-3">
-                                        <span className="flex items-center gap-2"><Truck className="w-4 h-4 text-[#9fe43f]"/> Vehículos</span>
-                                        <span className="text-[#9fe43f] text-sm sm:text-base">{vehicles}</span>
-                                    </label>
-                                    <input 
-                                        type="range" min="1" max="100" value={vehicles} onChange={(e) => setVehicles(Number(e.target.value))}
-                                        className="w-full h-2 bg-[#02255b] rounded-lg appearance-none cursor-pointer accent-[#9fe43f]"
-                                    />
-                                    <p className="text-[10px] sm:text-xs text-gray-500 mt-1.5 leading-tight">Cantidad total de unidades (autos, utilitarios o camiones) en tu flota activa.</p>
-                                </div>
-                                <div>
-                                    <label className="flex items-center justify-between text-xs sm:text-sm font-bold text-gray-300 mb-3">
-                                        <span className="flex items-center gap-2"><Activity className="w-4 h-4 text-[#9fe43f]"/> Litros / vehículo (Mensual)</span>
-                                        <span className="text-[#9fe43f] text-sm sm:text-base">{liters} L</span>
-                                    </label>
-                                    <input 
-                                        type="range" min="50" max="2000" step="50" value={liters} onChange={(e) => setLiters(Number(e.target.value))}
-                                        className="w-full h-2 bg-[#02255b] rounded-lg appearance-none cursor-pointer accent-[#9fe43f]"
-                                    />
-                                    <p className="text-[10px] sm:text-xs text-gray-500 mt-1.5 leading-tight">Estimación del consumo promedio mensual de combustible por cada vehículo.</p>
-                                </div>
-                                <div>
-                                    <label className="flex items-center justify-between text-xs sm:text-sm font-bold text-gray-300 mb-3">
-                                        <span className="flex items-center gap-2"><Briefcase className="w-4 h-4 text-[#9fe43f]"/> Precio del litro ($ ARS)</span>
-                                        <span className="text-[#9fe43f] text-sm sm:text-base">${price}</span>
-                                    </label>
-                                    <input 
-                                        type="range" min="500" max="2000" step="50" value={price} onChange={(e) => setPrice(Number(e.target.value))}
-                                        className="w-full h-2 bg-[#02255b] rounded-lg appearance-none cursor-pointer accent-[#9fe43f]"
-                                    />
-                                    <p className="text-[10px] sm:text-xs text-gray-500 mt-1.5 leading-tight">Valor promedio del litro de combustible (Nafta o Gasoil) utilizado.</p>
-                                </div>
-                                <div>
-                                    <label className="flex items-center justify-between text-xs sm:text-sm font-bold text-gray-300 mb-3">
-                                        <span className="flex items-center gap-2 truncate"><Activity className="w-4 h-4 text-[#9fe43f] flex-shrink-0"/> % Desvío combustible</span>
-                                        <span className="text-[#9fe43f] text-sm sm:text-base ml-2">{deviation}%</span>
-                                    </label>
-                                    <input 
-                                        type="range" min="1" max="20" value={deviation} onChange={(e) => setDeviation(Number(e.target.value))}
-                                        className="w-full h-2 bg-[#02255b] rounded-lg appearance-none cursor-pointer accent-[#9fe43f]"
-                                    />
-                                    <p className="text-[10px] sm:text-xs text-gray-500 mt-1.5 leading-tight">Robos, ralentí o uso no oficial. El promedio sin control es 5% - 10%.</p>
-                                </div>
-                                <div className="pt-2">
-                                    <label className="flex items-center justify-between text-xs sm:text-sm font-bold text-gray-300 mb-3">
-                                        <span className="flex items-center gap-2 truncate"><Settings className="w-4 h-4 text-[#9fe43f] flex-shrink-0"/> % Roturas por mal uso</span>
-                                        <span className="text-[#9fe43f] text-sm sm:text-base ml-2">{misusePercent}%</span>
-                                    </label>
-                                    <input 
-                                        type="range" min="0" max="100" value={misusePercent} onChange={(e) => setMisusePercent(Number(e.target.value))}
-                                        className="w-full h-2 bg-[#02255b] rounded-lg appearance-none cursor-pointer accent-[#9fe43f]"
-                                    />
-                                    <p className="text-[10px] sm:text-xs text-gray-500 mt-1.5 leading-tight">
-                                        Mantenimientos correctivos por maltrato. Costo promedio estimado: <strong>$50.000 mensual por unidad afectada</strong>.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="lg:col-span-5 flex flex-col gap-4 w-full">
-                            <div className="bg-red-500/10 border border-red-500/30 rounded-2xl p-5 sm:p-6 text-center relative overflow-hidden">
-                                <div className="absolute -top-10 -right-10 w-32 h-32 bg-red-500/20 rounded-full blur-3xl"></div>
-                                <h3 className="text-red-400 font-bold mb-1 sm:mb-2 text-sm">Podrías estar perdiendo</h3>
-                                <div className="text-3xl sm:text-4xl lg:text-4xl font-black text-white mb-1 tracking-tighter">
-                                    {formatCurrency(monthlyLoss)}
-                                </div>
-                                <div className="text-[10px] sm:text-xs text-gray-400 mb-1">por mes.</div>
-                                <div className="mt-3 pt-3 border-t border-red-500/20">
-                                    <p className="text-red-200 text-[10px] sm:text-xs">
-                                        Equivale a <strong className="text-white text-xs sm:text-sm">{formatCurrency(yearlyLoss)}</strong> al año.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="bg-[#02255b] border border-white/5 rounded-2xl p-5 sm:p-6">
-                                <h4 className="text-white font-bold mb-3 sm:mb-4 flex items-center gap-2 text-sm">
-                                    <Shield className="w-4 h-4 sm:w-4 text-[#9fe43f]" />
-                                    Cómo lo evitamos:
-                                </h4>
-                                <ul className="space-y-2 sm:space-y-2.5 mb-5">
-                                    {[
-                                        "Frenás desvíos y consumo innecesario",
-                                        "Eliminás kilómetros improductivos",
-                                        "Controlas uso, consumos o robos de combustible",
-                                        "Detectás ineficiencias antes de que cuesten dinero",
-                                        "Convertís datos en decisiones concretas"
-                                    ].map((item, i) => (
-                                        <li key={i} className="flex items-center gap-2 text-[10px] sm:text-xs text-gray-300">
-                                            <CheckCircle className="w-3.5 h-3.5 text-[#9fe43f] flex-shrink-0" /> {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                                <div className="bg-[#9fe43f]/10 border border-[#9fe43f]/30 rounded-xl p-3 mb-4">
-                                    <p className="text-[#9fe43f] text-[10px] sm:text-xs font-bold text-center leading-tight">
-                                        Si detectás solo el 50% de esta pérdida, el sistema se paga solo.
-                                    </p>
-                                </div>
-                                <a 
-                                    href={WHATSAPP_LINK} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="block w-full bg-[#9fe43f] text-[#02255b] text-center font-black py-3 rounded-xl hover:bg-white transition-colors shadow-lg text-xs sm:text-sm"
-                                >
-                                    DEJAR DE PERDER DINERO
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="mt-8 pt-5 border-t border-white/10">
-                        <h5 className="text-gray-400 text-[9px] sm:text-[10px] font-bold mb-2 uppercase tracking-wider">Fuentes y Referencias del Simulador:</h5>
-                        <div className="text-[8px] sm:text-[9px] text-gray-500 space-y-1.5 leading-relaxed">
-                            <p>Las estimaciones de ahorro usadas en este simulador se basan en informes y estudios del sector de telemetría y gestión de flotas:</p>
-                            <ul className="list-disc pl-3 sm:pl-4 space-y-0.5">
-                                <li><strong className="text-gray-400">Geotab – Fleet Profitability & ROI White Paper:</strong> análisis de cómo la telemetría reduce costos operativos y de combustible. <a href="https://www.geotab.com/white-paper/fleet-profitability-coi-roi/" target="_blank" rel="noopener noreferrer" className="text-[#9fe43f]/70 hover:text-[#9fe43f] underline decoration-dotted">Ver reporte</a></li>
-                                <li><strong className="text-gray-400">Geotab – Fleet Fuel Management Solutions:</strong> datos sobre ahorro en consumo y uso eficiente. <a href="https://www.geotab.com/fleet-management-solutions/fleet-fuel-management/" target="_blank" rel="noopener noreferrer" className="text-[#9fe43f]/70 hover:text-[#9fe43f] underline decoration-dotted">Ver reporte</a></li>
-                                <li><strong className="text-gray-400">Geotab – Greening the Fleet Survey:</strong> métricas reales de telemetría aplicadas a consumo, idling y kms recorridos. <a href="https://www.geotab.com/CMS-GeneralFiles-production/NA/ebooks/Geotab_Greening-the-Fleet-Survey_EN_AODA.pdf" target="_blank" rel="noopener noreferrer" className="text-[#9fe43f]/70 hover:text-[#9fe43f] underline decoration-dotted">Ver reporte</a></li>
-                                <li><strong className="text-gray-400">Verizon Connect – Fleet Cost Savings Strategies:</strong> reporte con datos de ahorro en combustible, mantenimiento y siniestros. <a href="https://www.verizonconnect.com/resources/article/fleet-management-cost-savings-strategies/" target="_blank" rel="noopener noreferrer" className="text-[#9fe43f]/70 hover:text-[#9fe43f] underline decoration-dotted">Ver reporte</a></li>
-                                <li><strong className="text-gray-400">U.S. Department of Energy – Telematics Federal Fleets Guide:</strong> guía sobre eficiencia y reducción de consumo con sistemas telemáticos. <a href="https://www.energy.gov/femp/telematics-federal-fleets-guide-efficient-fleet-management" target="_blank" rel="noopener noreferrer" className="text-[#9fe43f]/70 hover:text-[#9fe43f] underline decoration-dotted">Ver reporte</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
     );
@@ -684,8 +667,7 @@ const StepsAndTrial = () => {
                     Probalo con datos reales.
                 </h2>
                 <p className="text-gray-300 text-sm sm:text-base lg:text-lg mb-6 lg:mb-8 max-w-2xl mx-auto leading-relaxed">
-                    Te ofrecemos <span className="text-[#9fe43f] font-bold">15 DÍAS DE PRUEBA GRATUITA</span> sin riesgo.
-                    Probá el hardware y software en tus vehículos antes de decidir.
+                    No queremos que nos creas, queremos que lo pruebes en tu flota. Te ofrecemos <span className="text-[#9fe43f] font-bold">15 DÍAS DE PRUEBA GRATUITA</span> sin riesgo ni compromiso de compra.
                 </p>
                 <div className="flex justify-center w-full">
                     <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="block w-full sm:w-auto bg-[#9fe43f] text-[#02255b] px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-black text-sm sm:text-lg hover:bg-white transition-all shadow-xl hover:scale-105 active:scale-95">
@@ -700,52 +682,92 @@ const StepsAndTrial = () => {
 
 // 9. FOOTER Y CTA FINAL
 const Footer = () => {
-    return (
-        <footer className="bg-[#000d21] border-t border-white/10 pt-16 lg:pt-20 pb-10 px-4 sm:px-6">
-            <div className="max-w-4xl mx-auto text-center mb-12 lg:mb-16">
-                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 lg:mb-6 leading-tight">
-                    No te vamos a vender nada por la web.
-                </h2>
-                <p className="text-gray-400 mb-6 lg:mb-8 text-sm sm:text-base lg:text-lg px-2">
-                    Queremos entender tu operación, cuántos vehículos tenés y mostrarte si nuestro sistema realmente te sirve.
-                </p>
-                <a href={WHATSAPP_LINK} className="inline-flex items-center gap-2 sm:gap-3 text-[#9fe43f] font-bold text-sm sm:text-lg hover:text-white transition-colors border-b-2 border-[#9fe43f] pb-1">
-                    <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5"/> Hablar con un asesor comercial
-                </a>
+  return (
+    <footer className="bg-[#000d21] border-t border-white/10 pt-16 lg:pt-20 pb-10 px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto text-center mb-12 lg:mb-16">
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 lg:mb-6 leading-tight">
+          No te vamos a vender nada por la web.
+        </h2>
+        <p className="text-gray-400 mb-6 lg:mb-8 text-sm sm:text-base lg:text-lg px-2">
+          Queremos entender tu operación, cuántos vehículos tenés y mostrarte si nuestro sistema realmente te sirve.
+        </p>
+        <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 sm:gap-3 text-[#9fe43f] font-bold text-sm sm:text-lg hover:text-white transition-colors border-b-2 border-[#9fe43f] pb-1">
+          <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5"/> Hablar con un asesor comercial
+        </a>
+
+        {/* BLOQUE "NOSOTROS" */}
+        <div className="mt-16 pt-12 border-t border-white/5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
+            <div className="group flex flex-col items-center p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-[#9fe43f]/30 transition-all duration-300">
+              <div className="w-10 h-10 rounded-xl bg-[#9fe43f]/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <Calendar className="w-5 h-5 text-[#9fe43f]" />
+              </div>
+              <span className="text-[10px] sm:text-xs text-gray-300 font-bold uppercase tracking-[0.15em] text-center">Desde 2022</span>
             </div>
-            <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 pt-8 lg:pt-12 border-t border-white/5 text-xs sm:text-sm">
-                <div className="col-span-1 sm:col-span-2">
-                    <span className="text-lg lg:text-xl font-black tracking-tighter text-white block mb-3 lg:mb-4">
-                        CENTINEL <span className="text-[#9fe43f]">FLOTAS</span>
-                    </span>
-                    <p className="text-gray-500 max-w-sm leading-relaxed text-xs sm:text-sm">
-                        Software desarrollado en conjunto con partners tecnológicos globales. 
-                        Soluciones estandarizadas y a medida para flotas desde 2 unidades.
-                    </p>
-                </div>
-                <div>
-                    <h4 className="text-white font-bold mb-3 lg:mb-4 text-sm sm:text-base">Contacto</h4>
-                    <ul className="space-y-2 lg:space-y-3 text-gray-500">
-                        <li className="flex items-center gap-2"><MapIcon className="w-3.5 h-3.5 lg:w-4 lg:h-4"/> Córdoba, Argentina</li>
-                        <li className="flex items-center gap-2"><Phone className="w-3.5 h-3.5 lg:w-4 lg:h-4"/> +54 9 351 123-4567</li>
-                        <li className="flex items-center gap-2"><Mail className="w-3.5 h-3.5 lg:w-4 lg:h-4"/> empresas@centinel.com</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 className="text-white font-bold mb-3 lg:mb-4 text-sm sm:text-base">Servicios</h4>
-                    <ul className="space-y-2 lg:space-y-3 text-gray-500">
-                        <li>Rastreo Satelital</li>
-                        <li>Dashcams / Video</li>
-                        <li>Telemetría Avanzada</li>
-                        <li>Desarrollos a medida</li>
-                    </ul>
-                </div>
+
+            <div className="group flex flex-col items-center p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-[#9fe43f]/30 transition-all duration-300">
+              <div className="w-10 h-10 rounded-xl bg-[#9fe43f]/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <Globe className="w-5 h-5 text-[#9fe43f]" />
+              </div>
+              <span className="text-[10px] sm:text-xs text-gray-300 font-bold uppercase tracking-[0.15em] text-center">Partners globales</span>
             </div>
-            <div className="max-w-7xl mx-auto pt-6 lg:pt-8 mt-8 lg:mt-12 border-t border-white/5 text-center text-[10px] sm:text-xs text-gray-600">
-                © {new Date().getFullYear()} Centinel Solutions. Todos los derechos reservados.
+
+            <div className="group flex flex-col items-center p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-[#9fe43f]/30 transition-all duration-300">
+              <div className="w-10 h-10 rounded-xl bg-[#9fe43f]/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <Layers className="w-5 h-5 text-[#9fe43f]" />
+              </div>
+              <span className="text-[10px] sm:text-xs text-gray-300 font-bold uppercase tracking-[0.15em] text-center leading-tight">Implementación por etapas</span>
             </div>
-        </footer>
-    );
+
+            <div className="group flex flex-col items-center p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-[#9fe43f]/30 transition-all duration-300">
+              <div className="w-10 h-10 rounded-xl bg-[#9fe43f]/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <FileCheck className="w-5 h-5 text-[#9fe43f]" />
+              </div>
+              <span className="text-[10px] sm:text-xs text-gray-300 font-bold uppercase tracking-[0.15em] text-center">Soporte y contrato</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 pt-8 lg:pt-12 border-t border-white/5 text-xs sm:text-sm">
+        <div className="col-span-1 sm:col-span-2">
+          <span className="text-lg lg:text-xl font-black tracking-tighter text-white block mb-3 lg:mb-4">
+            CENTINEL <span className="text-[#9fe43f]">FLOTAS</span>
+          </span>
+          <p className="text-gray-500 max-w-sm leading-relaxed text-xs sm:text-sm">
+            Software desarrollado en conjunto con partners tecnológicos globales. 
+            Soluciones estandarizadas y a medida para flotas desde 2 unidades.
+          </p>
+        </div>
+        <div>
+          <h4 className="text-white font-bold mb-3 lg:mb-4 text-sm sm:text-base">Contacto</h4>
+          <ul className="space-y-2 lg:space-y-3 text-gray-500">
+            <li className="flex items-center gap-2"><MapIcon className="w-3.5 h-3.5 lg:w-4 lg:h-4"/> Juan Antonio Argarañaz 1715, Córdoba</li>
+            <li className="flex items-center gap-2">
+              <Phone className="w-3.5 h-3.5 lg:w-4 lg:h-4"/> 
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors underline decoration-dotted underline-offset-4">3518626405</a>
+            </li>
+            <li className="flex items-center gap-2">
+              <Mail className="w-3.5 h-3.5 lg:w-4 lg:h-4"/> 
+              <a href="mailto:contacto@centinelflotas.com" className="hover:text-white transition-colors">contacto@centinelflotas.com</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="text-white font-bold mb-3 lg:mb-4 text-sm sm:text-base">Servicios</h4>
+          <ul className="space-y-2 lg:space-y-3 text-gray-500">
+            <li>Rastreo Satelital</li>
+            <li>Dashcams / Video</li>
+            <li>Telemetría Avanzada</li>
+            <li>Desarrollos a medida</li>
+          </ul>
+        </div>
+      </div>
+      <div className="max-w-7xl mx-auto pt-6 lg:pt-8 mt-8 lg:mt-12 border-t border-white/5 text-center text-[10px] sm:text-xs text-gray-600">
+        © {new Date().getFullYear()} Centinel Solutions. Todos los derechos reservados.
+      </div>
+    </footer>
+  );
 };
 
 // --- APP PRINCIPAL ---
@@ -782,8 +804,8 @@ export default function App() {
       <PainPoints />
       <Solution />
       <BusinessModel />
-      <Dashcams />
       <ROICalculator />
+      <Dashcams />
       <StepsAndTrial />
       <Footer />
       
