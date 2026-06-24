@@ -61,8 +61,9 @@ export default function Hero() {
                 />
               </picture>
               <p className="mt-4 text-center text-sm text-slate-500">
-                Autos, motos y utilitarios · camiones y maquinaria · logística, distribución y
-                alquileres.
+                Rastreo en tiempo real · Geocercas · Videotelemática · Gestión de combustible ·
+                Comportamiento del conductor · Optimización de rutas · Lectura de sensores · Alertas
+                · Reportes avanzados.
               </p>
             </div>
           </div>
