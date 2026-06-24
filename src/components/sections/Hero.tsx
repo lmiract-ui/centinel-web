@@ -13,7 +13,7 @@ export default function Hero() {
           <div className="order-1 animate-fade-up text-center lg:order-none lg:col-start-1 lg:row-start-1 lg:text-left">
             <span className="pill-live mx-auto lg:mx-0">
               <span className="h-1.5 w-1.5 rounded-full bg-live-400" />
-              Soluciones de control vehicular a medida
+              Rastreo y control satelital a medida de tu flota
             </span>
 
             <h1 className="mt-5 text-balance text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
