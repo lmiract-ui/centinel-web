@@ -5,6 +5,7 @@ import QuoteBand from '../components/sections/QuoteBand'
 import Soluciones from '../components/sections/Soluciones'
 import Hardware from '../components/sections/Hardware'
 import Plataformas from '../components/sections/Plataformas'
+import Garantia from '../components/sections/Garantia'
 import Dashcams from '../components/sections/Dashcams'
 import Proceso from '../components/sections/Proceso'
 import Comparativa from '../components/sections/Comparativa'
@@ -26,6 +27,7 @@ export default function Home() {
       <Soluciones />
       <Hardware />
       <Plataformas />
+      <Garantia />
       <Dashcams />
       <Proceso />
       <Comparativa />
