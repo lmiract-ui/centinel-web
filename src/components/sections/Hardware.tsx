@@ -8,12 +8,7 @@ export default function Hardware() {
       <div className="container-app">
         <SectionHeading
           eyebrow="Hardware serio"
-          titulo={
-            <>
-              El problema casi nunca es el GPS.
-              <br className="hidden sm:block" /> Es el equipo equivocado para tu operación.
-            </>
-          }
+          titulo="Un servicio confiable empieza por elegir el equipo y la calidad correctos."
           texto="Elegimos el equipo según cada vehículo: consumo, cobertura, exigencia y qué datos necesitás medir. No es lo mismo un vehículo de minería que un camión de larga distancia."
         />
 
