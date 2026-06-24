@@ -17,8 +17,8 @@ export default function Footer() {
               </span>
             </a>
             <p className="mt-4 text-sm leading-relaxed text-slate-400">{site.tagline}.</p>
-            <p className="mt-4 inline-flex items-center gap-1.5 text-sm text-slate-500">
-              <MapPin className="h-4 w-4 text-brand-400" />
+            <p className="mt-4 flex w-fit items-center gap-1.5 text-sm text-slate-500">
+              <MapPin className="h-4 w-4 shrink-0 text-brand-400" />
               {site.ciudad}, {site.pais}
             </p>
 
@@ -26,7 +26,7 @@ export default function Footer() {
               href={waLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 rounded-xl bg-live-500 px-4 py-2.5 text-sm font-semibold text-ink-950 transition hover:bg-live-400"
+              className="mt-5 flex w-fit items-center gap-2 rounded-xl bg-live-500 px-4 py-2.5 text-sm font-semibold text-ink-950 transition hover:bg-live-400"
             >
               <WhatsAppIcon className="h-4 w-4" />
               Hablar con un asesor

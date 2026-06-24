@@ -146,7 +146,7 @@ export default function Diagnostico() {
           </button>
 
           <p className="flex items-center justify-center gap-2 text-center text-sm text-slate-500">
-            <ShieldCheck className="h-4 w-4 text-live-400" />
+            <ShieldCheck className="h-4 w-4 shrink-0 text-live-400" />
             No vendemos paquetes cerrados. Analizamos tu operación y te recomendamos una solución
             acorde.
           </p>

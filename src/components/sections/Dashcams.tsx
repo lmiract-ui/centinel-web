@@ -34,7 +34,7 @@ export default function Dashcams() {
         {/* Las 3 vistas de cámara */}
         <div className="mx-auto mt-14 max-w-5xl">
           <h3 className="text-balance text-center text-2xl font-extrabold tracking-tight text-white">
-            Hasta tres cámaras por unidad, según lo que necesites ver.
+            Hasta 3 cámaras por vehículo: ruta, habitáculo y exterior/depósito.
           </h3>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
