@@ -8,9 +8,9 @@ export default function Hero() {
       <div className="absolute inset-x-0 top-0 -z-10 h-[560px] bg-grid-fade" />
 
       <div className="container-app pt-12 pb-6 sm:pt-16 lg:pt-20">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          {/* Texto */}
-          <div className="animate-fade-up text-center lg:text-left">
+        <div className="grid items-start gap-x-12 gap-y-8 lg:grid-cols-2">
+          {/* Texto (título + subtítulo) */}
+          <div className="order-1 animate-fade-up text-center lg:order-none lg:col-start-1 lg:row-start-1 lg:text-left">
             <span className="pill-live mx-auto lg:mx-0">
               <span className="h-1.5 w-1.5 rounded-full bg-live-400" />
               Soluciones de control vehicular a medida
@@ -28,26 +28,10 @@ export default function Hero() {
               Una flota mal controlada pierde plata todos los días, aunque todos los vehículos estén
               andando. Te damos el control para que eso no te pase.
             </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
-              <a href="#diagnostico" className="btn-signal">
-                Solicitar diagnóstico
-                <ArrowRight className="h-4 w-4" />
-              </a>
-              <a
-                href={waLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-ghost"
-              >
-                <MessageCircle className="h-4 w-4" />
-                Hablar con un asesor
-              </a>
-            </div>
           </div>
 
-          {/* Visual */}
-          <div className="animate-fade-up [animation-delay:120ms]">
+          {/* Visual (imagen + features) — en mobile va antes de los CTAs */}
+          <div className="order-2 animate-fade-up [animation-delay:120ms] lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-center">
             <div className="relative mx-auto w-full max-w-xl">
               <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-brand-500/15 blur-3xl" />
               <picture>
@@ -65,6 +49,20 @@ export default function Hero() {
                 Comportamiento del conductor · Optimización de rutas · Lectura de sensores · Alertas
                 · Reportes avanzados.
               </p>
+            </div>
+          </div>
+
+          {/* CTAs */}
+          <div className="order-3 lg:order-none lg:col-start-1 lg:row-start-2">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+              <a href="#diagnostico" className="btn-signal">
+                Solicitar diagnóstico
+                <ArrowRight className="h-4 w-4" />
+              </a>
+              <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+                <MessageCircle className="h-4 w-4" />
+                Hablar con un asesor
+              </a>
             </div>
           </div>
         </div>
