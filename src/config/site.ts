@@ -18,9 +18,8 @@ export const site = {
 
   // --- Contacto / WhatsApp ---------------------------------------------------
   // Número en formato internacional SIN "+" ni espacios.
-  // TODO: confirmar número definitivo para Flotas (placeholder del proyecto Centinel).
-  whatsapp: '5493515575131',
-  whatsappMsg: 'Hola, quiero que analicen mi flota y me recomienden una solución.',
+  whatsapp: '5493537536485',
+  whatsappMsg: 'Hola vengo de la web, tengo una flota y me gustaría hablar con un asesor.',
 
   // --- Navegación (anclas de la home) ---------------------------------------
   nav: [
