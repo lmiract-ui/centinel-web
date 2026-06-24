@@ -1,6 +1,5 @@
 import { ArrowRight, MessageCircle } from 'lucide-react'
 import { waLink } from '../../config/site'
-import FleetDashboard from '../FleetDashboard'
 
 export default function Hero() {
   return (
@@ -45,16 +44,27 @@ export default function Hero() {
                 Hablar con un asesor
               </a>
             </div>
-
-            <p className="mt-6 text-sm text-slate-500">
-              Autos, motos y utilitarios · camiones y maquinaria · logística, distribución y
-              alquileres.
-            </p>
           </div>
 
           {/* Visual */}
           <div className="animate-fade-up [animation-delay:120ms]">
-            <FleetDashboard />
+            <div className="relative mx-auto w-full max-w-xl">
+              <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-brand-500/15 blur-3xl" />
+              <picture>
+                <source srcSet="/hero-plataforma.webp" type="image/webp" />
+                <img
+                  src="/hero-plataforma.png"
+                  alt="Plataforma Centinel: rastreo en tiempo real, geocercas, videotelemática, gestión de combustible, conducción y reportes"
+                  width={1655}
+                  height={950}
+                  className="w-full rounded-2xl border border-white/10 bg-white shadow-card"
+                />
+              </picture>
+              <p className="mt-4 text-center text-sm text-slate-500">
+                Autos, motos y utilitarios · camiones y maquinaria · logística, distribución y
+                alquileres.
+              </p>
+            </div>
           </div>
         </div>
       </div>

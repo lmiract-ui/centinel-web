@@ -10,12 +10,11 @@ export default function Hardware() {
           eyebrow="Hardware serio"
           titulo={
             <>
-              El problema no siempre es el GPS.
-              <br className="hidden sm:block" /> Muchas veces es el equipo equivocado para tu
-              operación.
+              El problema casi nunca es el GPS.
+              <br className="hidden sm:block" /> Es el equipo equivocado para tu operación.
             </>
           }
-          texto="Usamos hardware probado según el tipo de vehículo, consumo eléctrico, cobertura, instalación, nivel de exigencia y datos que necesitás medir. No es lo mismo rastrear una moto, una camioneta urbana, un camión de larga distancia o una unidad con sensores."
+          texto="Elegimos el equipo según cada vehículo: consumo, cobertura, exigencia y qué datos necesitás medir. No es lo mismo un vehículo de minería que un camión de larga distancia."
         />
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
