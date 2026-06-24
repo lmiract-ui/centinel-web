@@ -1,4 +1,4 @@
-import { Check } from 'lucide-react'
+import { Check, Globe2 } from 'lucide-react'
 import SectionHeading from './SectionHeading'
 import { plataformas } from '../../content/flotas'
 
@@ -57,9 +57,12 @@ export default function Plataformas() {
           ))}
         </div>
 
-        <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-slate-500">
-          Plataformas con trayectoria internacional, años de desarrollo y reconocimiento global.
-        </p>
+        <div className="mx-auto mt-10 flex max-w-2xl items-center justify-center gap-3 rounded-2xl border border-brand-400/20 bg-brand-500/[0.06] px-6 py-5 text-center">
+          <Globe2 className="hidden h-7 w-7 shrink-0 text-brand-300 sm:block" />
+          <p className="text-balance text-base font-semibold text-white sm:text-lg">
+            Plataformas con trayectoria internacional, años de desarrollo y reconocimiento global.
+          </p>
+        </div>
       </div>
     </section>
   )
